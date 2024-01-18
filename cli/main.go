@@ -12,7 +12,7 @@ import (
 )
 
 const width float64 = 180.0
-const height float64 = 60.0
+const height float64 = 50.0
 
 const leng float64 = 15
 
@@ -85,7 +85,7 @@ func main() {
 					rx := (projected[ld].X * i) + (projected[li].X * (1 - i))
 					ry := (projected[ld].Y * i) + (projected[li].Y * (1 - i))
 					rz := (trans_model[ld].Z * i) + (trans_model[li].Z * (1 - i))
-					rx *= 16.0 / 9.0
+					rx *= 16. / 9.
 					s.SetContent(int(rx+width/2), int(ry+height/2), ' ', nil, tcell.StyleDefault.Background(tcell.PaletteColor(int(rz+1024)%256)).Foreground(tcell.ColorBlack))
 				}
 			}
@@ -97,20 +97,7 @@ func main() {
 
 		s.Show()
 
-		for _, pt := range projected {
-			s.SetContent(int((pt.X*2)+width/2), int(pt.Y+height/2), ' ', nil, tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorBlack))
-		}
-
-		for li, lrd := range model_lines {
-			for _, ld := range lrd {
-				for i := 0.0; i < 1.0; i += 0.02 {
-					rx := (projected[ld].X * i) + (projected[li].X * (1 - i))
-					ry := (projected[ld].Y * i) + (projected[li].Y * (1 - i))
-					rx *= 2
-					s.SetContent(int(rx+width/2), int(ry+height/2), ' ', nil, tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorBlack))
-				}
-			}
-		}
+		s.Fill(' ', tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorBlack))
 
 		ux += 0.01
 		uy += 0.02
