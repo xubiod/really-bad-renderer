@@ -31,8 +31,8 @@ func TestWeak(t *testing.T) {
 		os.Mkdir("./weak-out", 0666)
 	}
 
-	for brainrot := 0.0; brainrot < 4*math.Pi; brainrot += (math.Pi / 32) {
-		screen := p.WeakPerspective(g.Rotate(model, 0, brainrot, 0), 100)
+	for time := 0.0; time < 4*math.Pi; time += (math.Pi / 32) {
+		screen := p.WeakPerspective(g.Rotate(model, 0, time, 0), 100)
 
 		err = g.GeneratePng(screen, model_lines, fmt.Sprintf("weak-out/weak-test_%d.png", c))
 

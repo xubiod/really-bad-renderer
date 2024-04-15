@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func GeneratePng(screen []Point2, model_lines []([]int), fn string) error {
+func GeneratePng(screen []Point2, model_lines []([]int), fn string) (err error) {
 	r := image.Rect(0, 0, 400, 400)
 	m := image.NewNRGBA(r)
 
@@ -31,16 +31,16 @@ func GeneratePng(screen []Point2, model_lines []([]int), fn string) error {
 
 	f, err := os.Create(fn)
 	if err != nil {
-		return err
+		return
 	}
 
-	if err := png.Encode(f, m); err != nil {
-		return err
+	if err = png.Encode(f, m); err != nil {
+		return
 	}
 
-	if err := f.Close(); err != nil {
-		return err
+	if err = f.Close(); err != nil {
+		return
 	}
 
-	return nil
+	return
 }

@@ -33,8 +33,8 @@ func TestOrtho(t *testing.T) {
 
 	// fmt.Sprintf("ortho-test_%d.png", c)
 
-	for brainrot := 0.0; brainrot < 4*math.Pi; brainrot += (math.Pi / 32) {
-		screen := p.Ortho(g.Rotate(model, 0, brainrot, 0), -1, 1, -1, 1, 0.25, 5)
+	for time := 0.0; time < 4*math.Pi; time += (math.Pi / 32) {
+		screen := p.Ortho(g.Rotate(model, 0, time, 0), -1, 1, -1, 1, 0.25, 5)
 
 		// if len(screen) != 4 {
 		// 	t.FailNow()

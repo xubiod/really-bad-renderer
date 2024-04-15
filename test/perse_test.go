@@ -31,8 +31,10 @@ func TestPerse(t *testing.T) {
 		os.Mkdir("./perse-out", 0666)
 	}
 
-	for brainrot := 0.0; brainrot < 4*math.Pi; brainrot += (math.Pi / 32) {
-		screen := p.Perspective(g.Rotate(model, 0, brainrot, 0), g.Point3{50, 0, 0}, g.Point3{0, 0, 0}, g.Point3{0, 0, 1 / math.Tan((math.Pi*5.0)/18.0)})
+	for time := 0.0; time < 4*math.Pi; time += (math.Pi / 32) {
+		screen := p.Perspective(g.Rotate(model, 0, time, 0),
+			g.Point3{X: 50, Y: 0, Z: 0}, g.Point3{X: 0, Y: 0, Z: 0}, g.Point3{X: 0, Y: 0, Z: 1 / math.Tan((math.Pi*5.0)/18.0)},
+		)
 
 		err = g.GeneratePng(screen, model_lines, fmt.Sprintf("perse-out/perse-test_%d.png", c))
 
