@@ -16,16 +16,20 @@ const height float64 = 50.0
 
 const leng float64 = 15
 
+func pt(x, y, z float64) g.Point3 { return g.Point3{X: x, Y: y, Z: z} }
+
 var model []g.Point3 = []g.Point3{
-	// 0							1								2								3
-	{X: -leng, Y: -leng, Z: -leng}, {X: -leng, Y: -leng, Z: +leng}, {X: -leng, Y: +leng, Z: +leng}, {X: -leng, Y: +leng, Z: -leng},
-	// 4							5								6								7
-	{X: +leng, Y: -leng, Z: -leng}, {X: +leng, Y: -leng, Z: +leng}, {X: +leng, Y: +leng, Z: +leng}, {X: +leng, Y: +leng, Z: -leng},
+	// 0					 1						 2						 3
+	pt(-leng, -leng, -leng), pt(-leng, -leng, +leng), pt(-leng, +leng, +leng), pt(-leng, +leng, -leng),
+	// 4					 5						 6						 7
+	pt(+leng, -leng, -leng), pt(+leng, -leng, +leng), pt(+leng, +leng, +leng), pt(+leng, +leng, -leng),
+	// pt(0, -leng, 0), pt(leng, 0, 0), pt(0, leng, 0), pt(0, 0, 0), pt(-leng, leng, 0), pt(-leng, 0, 0),
 }
 
 var model_lines []([]int) = []([]int){
 	[]int{1, 3, 4}, []int{2, 5}, []int{3}, []int{},
 	[]int{5, 7}, []int{}, []int{2, 5, 7}, []int{3},
+	// []int{1}, []int{2}, []int{3}, []int{4}, []int{5}, []int{0},
 }
 
 var ux, uy, uz, grain float64
